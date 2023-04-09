@@ -30,11 +30,15 @@ public:
     int add(int fd,__uint32_t events);
     int del(struct epoll_event epe);
     int wait();
+
+
+
     
-private:
-    int epfd;
     struct epoll_event evs[MAX_EVENTS_NUM];
 
+private:
+    int epfd;
+    
 };
 
 
