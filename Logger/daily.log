@@ -1,0 +1,48 @@
+DEBUG 2023-04-10 15:00:18 ./test/test.cpp:13
+this is 1
+FATAL 2023-04-10 15:00:18 ./test/test.cpp:14
+this is 1
+DEBUG 2023-04-10 15:00:22 ./test/test.cpp:13
+this is 2
+FATAL 2023-04-10 15:00:22 ./test/test.cpp:14
+this is 2
+DEBUG 2023-04-10 15:00:26 ./test/test.cpp:13
+this is 3
+FATAL 2023-04-10 15:00:26 ./test/test.cpp:14
+this is 3
+DEBUG 2023-04-10 15:00:30 ./test/test.cpp:13
+this is 4
+FATAL 2023-04-10 15:00:30 ./test/test.cpp:14
+this is 4
+DEBUG 2023-04-10 15:00:34 ./test/test.cpp:13
+this is 5
+FATAL 2023-04-10 15:00:34 ./test/test.cpp:14
+this is 5
+DEBUG 2023-04-10 15:00:38 ./test/test.cpp:13
+this is 6
+FATAL 2023-04-10 15:00:38 ./test/test.cpp:14
+this is 6
+DEBUG 2023-04-10 15:00:42 ./test/test.cpp:13
+this is 7
+FATAL 2023-04-10 15:00:42 ./test/test.cpp:14
+this is 7
+DEBUG 2023-04-10 15:00:46 ./test/test.cpp:13
+this is 8
+FATAL 2023-04-10 15:00:46 ./test/test.cpp:14
+this is 8
+DEBUG 2023-04-10 15:00:50 ./test/test.cpp:13
+this is 9
+FATAL 2023-04-10 15:00:50 ./test/test.cpp:14
+this is 9
+DEBUG 2023-04-10 15:01:00 ./test/test.cpp:13
+this is 1
+FATAL 2023-04-10 15:01:00 ./test/test.cpp:14
+this is 1
+DEBUG 2023-04-10 15:01:04 ./test/test.cpp:13
+this is 2
+FATAL 2023-04-10 15:01:04 ./test/test.cpp:14
+this is 2
+DEBUG 2023-04-10 15:01:08 ./test/test.cpp:13
+this is 3
+FATAL 2023-04-10 15:01:08 ./test/test.cpp:14
+this is 3

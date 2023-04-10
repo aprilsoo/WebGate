@@ -65,11 +65,11 @@ int main(int argc,char *argv[]){
     ep.add(sockfd,EPOLLIN);
     
 
-    //
+    //epoll_wait，读取到任务时将任务加入任务队列，
     while(1){
         int cnt = ep.wait();
         for(int i=0;i<cnt;i++){
-            if()
+            
         }
     }
 
