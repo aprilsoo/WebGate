@@ -62,31 +62,38 @@ int main(){
         return 1;
     }
 
-    //创建EPOLL
-    Epoll ep(1024);
-    ep.add(sockfd,EPOLLIN);
-    
-    //线程池
-    ThreadPoll tp(20,1024);
-    Task task;
-
-    //epoll_wait，读取到任务时将任务加入任务队列，
-    while(1){
-        int cnt = ep.wait();
-        for(int i=0;i<cnt;i++){
-            if(ep.evs[i].data.fd == sockfd && (ep.evs[i].events & EPOLLIN)){
-                struct sockaddr_in client_;
-                socklen_t len = sizeof(client_);
-                int client_fd = accept(sockfd,(sockaddr *)&client_,&len);
-                ep.add(client_fd,EPOLLIN | EPOLLET);
-            }else if(ep.evs[i].events & EPOLLIN){
-                task.fd = ep.evs[i].data.fd;
-                task.func = Fsm::test;
-                while(tp.add_task(task)!=-1);
-                
+    try{
+        //创建EPOLL
+        Epoll ep(1024);
+        ep.add(sockfd,EPOLLIN);
+        
+        //线程池
+        ThreadPoll tp(20,1024);
+        Task task;
+        while(1){
+            int cnt = ep.wait();
+            for(int i=0;i<cnt;i++){
+                if(ep.evs[i].data.fd == sockfd && (ep.evs[i].events & EPOLLIN)){
+                    struct sockaddr_in client_;
+                    socklen_t len = sizeof(client_);
+                    int client_fd = accept(sockfd,(sockaddr *)&client_,&len);
+                    ep.add(client_fd,EPOLLIN | EPOLLET);
+                }else if(ep.evs[i].events & EPOLLIN){
+                    task.fd = ep.evs[i].data.fd;
+                    task.func = Fsm::test;
+                    while(tp.add_task(task)!=-1);
+                }
             }
         }
+
+    }catch(...){
+        std::cout<<"服务器坏喽"<<std::endl;
+        fatal("服务器坏喽");
     }
+
+    //epoll_wait，读取到任务时将任务加入任务队列，
+    
+    
 
 
 

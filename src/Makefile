@@ -8,3 +8,6 @@ $(TARGET):$(OBJ)
 
 %.o:%.cpp
 	$(CC) -c $< -o $@
+
+clean:$(OBJ)
+	rm $(OBJ)

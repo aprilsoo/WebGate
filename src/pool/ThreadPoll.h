@@ -40,10 +40,10 @@ public:
             threads = (std::thread *)malloc(sizeof(std::thread)*size_thr);
 
             for(int i=0;i<size_thr;i++){
-                std::thread p1(run,*this);
+                std::thread p1(run,this);
                 swap(threads[i],p1);
                 threads[i].detach();
-                p1.detach();
+                // p1.detach();
             }
 
         }catch(...){
