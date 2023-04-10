@@ -68,6 +68,7 @@ private:
         
         std::thread p1(timer);
         p1.detach();
+        debug("日志打开");
     }
 
     ~Logger(){
