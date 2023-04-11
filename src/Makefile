@@ -9,5 +9,7 @@ $(TARGET):$(OBJ)
 %.o:%.cpp
 	$(CC) -c $< -o $@
 
+
+.PHONY: clean
 clean:$(OBJ)
 	rm $(OBJ)

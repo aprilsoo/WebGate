@@ -19,12 +19,20 @@ int Epoll::add(int fd,__uint32_t events){
     struct epoll_event epe;
     epe.data.fd = fd;
     epe.events = events;
-    return epoll_ctl(epfd,EPOLL_CTL_ADD,fd,&epe);
+    int w = epoll_ctl(epfd,EPOLL_CTL_ADD,fd,&epe);
+    debug("sockfd in epoll is %d" ,w);
+    return w;
 }
 
 
 int Epoll::wait(){
-    int cnt = epoll_wait(epfd,evs,MAX_EVENTS_NUM,-1);/*block*/
+    int cnt = 0;
+    try{
+        cnt = epoll_wait(epfd,evs,MAX_EVENTS_NUM,-1);/*block*/
+    }catch(...){
+        perror("");
+    }
+
     return cnt;
 }
 

@@ -1,48 +1,44 @@
-DEBUG 2023-04-10 15:00:18 ./test/test.cpp:13
-this is 1
-FATAL 2023-04-10 15:00:18 ./test/test.cpp:14
-this is 1
-DEBUG 2023-04-10 15:00:22 ./test/test.cpp:13
-this is 2
-FATAL 2023-04-10 15:00:22 ./test/test.cpp:14
-this is 2
-DEBUG 2023-04-10 15:00:26 ./test/test.cpp:13
-this is 3
-FATAL 2023-04-10 15:00:26 ./test/test.cpp:14
-this is 3
-DEBUG 2023-04-10 15:00:30 ./test/test.cpp:13
-this is 4
-FATAL 2023-04-10 15:00:30 ./test/test.cpp:14
-this is 4
-DEBUG 2023-04-10 15:00:34 ./test/test.cpp:13
-this is 5
-FATAL 2023-04-10 15:00:34 ./test/test.cpp:14
-this is 5
-DEBUG 2023-04-10 15:00:38 ./test/test.cpp:13
-this is 6
-FATAL 2023-04-10 15:00:38 ./test/test.cpp:14
-this is 6
-DEBUG 2023-04-10 15:00:42 ./test/test.cpp:13
-this is 7
-FATAL 2023-04-10 15:00:42 ./test/test.cpp:14
-this is 7
-DEBUG 2023-04-10 15:00:46 ./test/test.cpp:13
-this is 8
-FATAL 2023-04-10 15:00:46 ./test/test.cpp:14
-this is 8
-DEBUG 2023-04-10 15:00:50 ./test/test.cpp:13
-this is 9
-FATAL 2023-04-10 15:00:50 ./test/test.cpp:14
-this is 9
-DEBUG 2023-04-10 15:01:00 ./test/test.cpp:13
-this is 1
-FATAL 2023-04-10 15:01:00 ./test/test.cpp:14
-this is 1
-DEBUG 2023-04-10 15:01:04 ./test/test.cpp:13
-this is 2
-FATAL 2023-04-10 15:01:04 ./test/test.cpp:14
-this is 2
-DEBUG 2023-04-10 15:01:08 ./test/test.cpp:13
-this is 3
-FATAL 2023-04-10 15:01:08 ./test/test.cpp:14
-this is 3
+DEBUG 2023-04-11 12:03:05 tool/Logger.h:71
+日志打开
+DEBUG 2023-04-11 12:03:05 server/Epoll.h:25
+epfd = 5
+DEBUG 2023-04-11 12:03:05 server/Epoll.h:32
+epoll 创建成功
+DEBUG 2023-04-11 12:03:05 server/Epoll.cpp:23
+sockfd in epoll is 0
+DEBUG 2023-04-11 12:03:05 server/Main.cpp:78
+epoll ok
+DEBUG 2023-04-11 12:03:05 server/../pool/ThreadPoll.h:33
+线程池申请20 1024
+DEBUG 2023-04-11 12:03:05 server/../pool/Mysqlpool.h:18
+数据库连接池申请:20
+DEBUG 2023-04-11 12:03:05 server/../pool/Mysqlpool.h:27
+数据库连接池申请:20 成功
+DEBUG 2023-04-11 12:03:05 server/../pool/ThreadPoll.h:49
+线程成功创建
+DEBUG 2023-04-11 12:03:05 server/../pool/ThreadPoll.h:54
+线程池申请20 1024 成功
+DEBUG 2023-04-11 12:03:05 server/Main.cpp:83
+thread ok
+DEBUG 2023-04-11 12:03:08 server/Epoll.cpp:23
+sockfd in epoll is 0
+INFO 2023-04-11 12:03:08 server/Main.cpp:103
+新建连接: ip=localhost port=37614 fd=26
+DEBUG 2023-04-11 12:03:13 http/Fsm.cpp:20
+fsm 执行 26
+DEBUG 2023-04-11 12:03:19 http/Fsm.cpp:20
+fsm 执行 26
+DEBUG 2023-04-11 12:03:19 http/Fsm.cpp:20
+fsm 执行 26
+DEBUG 2023-04-11 12:03:19 http/Fsm.cpp:20
+fsm 执行 26
+DEBUG 2023-04-11 12:03:19 http/Fsm.cpp:20
+fsm 执行 26
+DEBUG 2023-04-11 12:03:19 http/Fsm.cpp:20
+fsm 执行 26
+DEBUG 2023-04-11 12:03:19 http/Fsm.cpp:20
+fsm 执行 26
+DEBUG 2023-04-11 12:03:20 http/Fsm.cpp:20
+fsm 执行 26
+DEBUG 2023-04-11 12:03:21 http/Fsm.cpp:20
+fsm 执行 26

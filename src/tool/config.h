@@ -5,6 +5,6 @@
 #define LOGGER_LIMIT 0
 #define LOGGER_BUFFER 10000
 #define LOGGER_FLUSH_TIME 3
-
+#define LOGGER_QUICK_PUSH 1 
 
 #endif 

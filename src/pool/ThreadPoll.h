@@ -10,6 +10,8 @@
 
 #include"Mysqlpool.h"
 #include"../tool/Logger.h"
+#include"../http/Fsm.h"
+
 
 class ThreadPoll;
 
@@ -26,34 +28,35 @@ public:
         size_thr = size_thread;
         size_task = size_tsk;
         size_free = size_thr;
-
         st=0,ed=0;
+
+        debug("线程池申请%d %d",size_thread,size_tsk);
+        
         try{
             tasks = (Task*)malloc(sizeof(Task)*size_task);
             if(tasks == NULL){
-                throw "申请内存失败";
+                throw "任务列表申请内存失败";
             }
             std::memset(tasks,0,sizeof(tasks));
 
-            sqlpool = new Mysqlpool(size_thr);
+            sqlpool = new Mysqlpool(size_thr);/*mysql连接池*/
 
-            threads = (std::thread *)malloc(sizeof(std::thread)*size_thr);
-
-            for(int i=0;i<size_thr;i++){
+            for(int i=0;i<1;i++){
                 std::thread p1(run,this);
-                swap(threads[i],p1);
-                threads[i].detach();
-                // p1.detach();
+                p1.detach();
             }
 
+            debug("线程成功创建");
         }catch(...){
+            debug("线程池申请%d %d 失败",size_thread,size_tsk);
             throw ;
         }
+        debug("线程池申请%d %d 成功",size_thread,size_tsk);
     }
 
     ~ThreadPoll(){
         free(tasks);
-        free(threads);
+        
         delete sqlpool;
     }
 
@@ -66,7 +69,6 @@ public:
 
     Task *tasks;
     Mysqlpool *sqlpool;
-    std::thread *threads;
     std::mutex task_mutex;
     std::condition_variable cv;
 private:

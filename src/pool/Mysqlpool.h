@@ -24,6 +24,7 @@ public:
                 throw "数据库连接失败！";
             }
         }
+        debug("数据库连接池申请:%d 成功",size);
     }
 
     MYSQL* ask();

@@ -1,8 +1,8 @@
 #ifndef _CONFIG_
 #define _CONFIG_
 
-// #define IP_ADDR IPADDR_ANY /*IPv4 addr*/
-#define PORT 8080 /*port*/
+// #define IP_ADDR "172.17.195.200" /*IPv4 addr*/
+#define PORT 9000 /*port*/
 #define MAX_LISTEN_NUM 20 /*listen max number*/
 
 

@@ -11,7 +11,7 @@
 #include"Logger.h"
 
 int Logger::cnt = 0;
-int Logger::quick_push = 0;
+int Logger::quick_push = LOGGER_QUICK_PUSH;
 char* Logger::logbuffer = nullptr;
 std::fstream Logger::fd = std::fstream();
 std::mutex Logger::mutex;
