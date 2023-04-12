@@ -5,33 +5,34 @@
 #include<string>
 #include<unistd.h>
 #include<errno.h>
-
+#include<sys/epoll.h>
 
 #include"Fsm.h"
 #include"../tool/Logger.h"
-
+#include"Httpparse.h"
 
 Fsm* Fsm::fsm = new Fsm;
 
 
+void Fsm::test(int fd,int epfd){
+    Httpparse hp(fd);
+    if(hp.status == -1){
+        // debug("parse failed");
+    }
+    info("body_buffer:%s",hp.body_buffer);
+    info("请求行:%d %d %s",hp.method,hp.version,hp.url);
+
+}
 
 
-void Fsm::test(int fd){
-    debug("fsm 执行 %d",fd);
-    char str[4096];
-    int cnt = 0;
+void Fsm::response(int epfd,struct epoll_event ev){
+    int fd = ev.data.fd;
 
-    
-    int len = read(fd,str+cnt,4096-cnt);
-        
-    if(len <= 0){
-        if(errno == EINTR || errno == EAGAIN)return;
+    Httpparse hp(fd);
+    if(hp.status == -1){
+        epoll_ctl(epfd,EPOLL_CTL_DEL,fd,&ev);
         return;
-    }else{
-        cnt+=len;
     }
     
-
-    info("str = %s",str);
-
+     
 }

@@ -4,19 +4,17 @@
 class Fsm{
 public:
 
-static void test(int fd);
-
-
+    static void test(int fd,int epfd);
+    static void response(int epfd,struct epoll_event ev);
 
 
 private:
 
+    
+    static Fsm *fsm;
 
-static Fsm *fsm;
-
-Fsm(){}
-~Fsm(){}
-
+    Fsm(){}
+    ~Fsm(){}
 
 };
 

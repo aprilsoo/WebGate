@@ -106,7 +106,7 @@ int main(){
                 }else if(ep.evs[i].events & EPOLLIN){
                     task.fd = ep.evs[i].data.fd;
                     task.func = Fsm::test;
-
+                    task.epfd = ep.get_epfd();
                     while(tp.add_task(task)!=-1);
                 }
             }

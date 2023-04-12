@@ -18,8 +18,9 @@ class ThreadPoll;
 void run(ThreadPoll* tp);
 
 struct Task{
-    void (*func)(int fd);
+    void (*func)(int fd,int epfd);
     int fd;
+    int epfd;
 };
 
 class ThreadPoll{
@@ -30,8 +31,6 @@ public:
         size_free = size_thr;
         st=0,ed=0;
 
-        debug("线程池申请%d %d",size_thread,size_tsk);
-        
         try{
             tasks = (Task*)malloc(sizeof(Task)*size_task);
             if(tasks == NULL){
@@ -46,12 +45,11 @@ public:
                 p1.detach();
             }
 
-            debug("线程成功创建");
         }catch(...){
-            debug("线程池申请%d %d 失败",size_thread,size_tsk);
+            
             throw ;
         }
-        debug("线程池申请%d %d 成功",size_thread,size_tsk);
+        
     }
 
     ~ThreadPoll(){

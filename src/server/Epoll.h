@@ -22,14 +22,10 @@ public:
             throw "epfd failed";
         }
 
-        debug("epfd = %d",epfd);
         evs = (struct epoll_event*)malloc(sizeof(struct epoll_event)*MAX_EVENTS_NUM);
         if(evs == NULL){
             throw "evs create failed";
-            debug("evs malloc");
         }
-
-        debug("epoll 创建成功");
     }
 
     ~Epoll(){
@@ -42,6 +38,9 @@ public:
     int del(struct epoll_event epe);
     int wait();
 
+    int get_epfd(){
+        return epfd;
+    }
     struct epoll_event *evs;
 
 private:
