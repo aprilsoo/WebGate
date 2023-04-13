@@ -1,0 +1,59 @@
+* { margin:0; padding:0; border:0;}
+html,body { height:100%;}
+.header{
+    height: 50px;
+    width: 100%;
+    background-color: dodgerblue;
+    position: relative;
+}
+.title{
+    width: 30%;
+    left: 0;
+    line-height: 50px;
+    margin-left: 20px;
+    height: 100%;
+    font-family: 微软雅黑;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+}
+.context{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: calc(98% - 50px);
+}
+
+.context>div{
+    border-radius: 50%;
+    height: 300px;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+}
+.context>div>img {
+    margin-top: 70px;
+    height: 100px;
+    width: 100px;
+    color: white;
+}
+.context>div>p {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    line-height: 50px;
+    font-weight: bolder;
+    font-family: 微软雅黑;
+    font-size: x-large;
+}
+.circle-process{
+    background-color: cornflowerblue;
+}
+.circle-page{
+    background-color: orange;
+}
+.circle-disk{
+    background-color: mediumpurple;
+}

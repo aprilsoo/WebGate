@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>进程调度模拟系统</title>
+    <link rel="stylesheet" href="css/ProcessAlgo.css">
+    <script src="js/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            进程调度模拟系统
+        </div>
+        <div class="oper">
+            <img src="img/save.svg" alt="保存">
+            <img src="img/home.svg" alt="首页">
+        </div>
+    </div>
+    <div class="context">
+        <div class="queue">
+            <div class="cpu">
+                <h2>正在运行</h2>
+                <div class="cpu-container">
+                    <img src="img/host_cpu.svg" alt="cpu">
+                    <div class="run-process-container">
+                        <div class="run-process"></div>
+                        <h4>当前无进程运行</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="ready">
+                <h2>就绪队列</h2>
+                <div class="p-container">
+
+                </div>
+            </div>
+            <div class="block">
+                <h2>阻塞队列</h2>
+                <div class="p-container">
+
+                </div>
+            </div>
+        </div>
+        <div class="process">
+            <h2>进程列表</h2>
+<!--            <div class="p-panel">-->
+<!--                <p class="p-index"><span>编号: </span>1</p>-->
+<!--                <p class="p-name"><span>名称: </span>进程1</p>-->
+<!--                <p class="p-arrive"><span>到达时间: </span>3</p>-->
+<!--                <p class="p-length"><span>运行时间: </span>15</p>-->
+<!--                <p class="p-block"><span>阻塞时间: </span>1</p>-->
+<!--                <p class="p-blength"><span>阻塞时长: </span>0</p>-->
+<!--                <p class="p-priority"><span>优先级: </span>5</p>-->
+<!--                <p class="p-status"><span>状态: </span>&#45;&#45;</p>-->
+<!--                <p class="p-rest"><span>剩余时长: </span>&#45;&#45;</p>-->
+<!--                <img src="img/delete-filling.svg" alt="删除">-->
+<!--            </div>-->
+            <div class="p-add ">
+                <img src="img/add-circle.svg" alt="添加">
+            </div>
+        </div>
+        <div class="other">
+            <div class="algo-select">
+                <h2>算法选项</h2>
+                <div>
+                    <div class="container-select">
+                        <select name="algo-select" id="algo-select">
+                            <option value="FCFS">先来先服务</option>
+                            <option value="SPF">短进程优先</option>
+                            <option value="RR">时间片轮转</option>
+                        </select>
+                    </div>
+<!--                    <div class="container-option">-->
+
+<!--                    </div>-->
+                </div>
+            </div>
+            <div class="operation">
+                <h2>模拟选项</h2>
+                <div>
+                    <button class="start">开始</button>
+                    <button class="reset">重置</button>
+<!--                    <button class="pause-continue">暂停</button>-->
+<!--                    <button class="execute">单步执行</button>-->
+<!--                    <button class="speed">1倍速</button>-->
+                </div>
+            </div>
+            <div class="log">
+                <h2>日志</h2>
+                <div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/ProcessAlgo.js"></script>
+</body>
+</html>

@@ -25,7 +25,8 @@ Httpparse::Httpparse(int _fd){
     char ver[16]="";
     
     sscanf(buf,"%16[^ ] %256[^ ] %16[^\r\n]\r\n",met,tmp,ver);
-    info("%s",buf);
+    info("%s %s %s",met,tmp,ver);
+    // info("%s",buf);
 
     if(strcasecmp(met,"GET")==0)method = GET;
     else if(strcasecmp(met,"POST")==0)method = POST;
@@ -80,6 +81,7 @@ Httpparse::Httpparse(int _fd){
         header_buffer[i] = rec_header[i];
     }
 
+
     body_buffer = (char*)malloc(buf_len - len);
     memcpy(body_buffer,buf+len,buf_len-len);
 
@@ -91,12 +93,12 @@ Httpparse::Httpparse(int _fd){
 Httpparse::~Httpparse(){
     
     try{
-        free(body_buffer);
-        free(url);
-        for(int i=0;i<header_num;i++){
-            free(header_buffer[i]);
-        }
-        free(header_buffer);
+        // free(body_buffer);
+        // free(url);
+        // for(int i=0;i<header_num;i++){
+        //     free(header_buffer[i]);
+        // }
+        // free(header_buffer);
         
     }catch(...){
 

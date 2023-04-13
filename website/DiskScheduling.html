@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="css/general.css">
+	<link rel="stylesheet" href="css/DiskScheduling.css">
+</head>
+<body>
+<div class="header-box">
+	<div class="nav-box">进程管理</div><div
+		class="nav-box">磁盘调度</div><div
+		class="nav-box">分页</div><div
+		class="nav-box"></div><div
+		class="nav-box"></div>
+</div>
+<div class="main-box">
+	<div class="title-box">
+		<h1>磁盘调度算法</h1>
+	</div>
+	<div class="content">
+		<div class="console">
+			<h2>控制台</h2>
+			<div class="mui-input-row mui-radio ">
+				<input value="1" name="Radio" type="radio" checked>
+				<label>FCFS</label>
+			</div>
+			<div class="mui-input-row mui-radio ">
+				<input value="2" name="Radio" type="radio">
+				<label>SSTF</label>
+			</div>
+			<div class="mui-input-row mui-radio ">
+				<input value="3" name="Radio" type="radio">
+				<label>SCAN</label>
+			</div>
+			<div class="mui-input-row mui-radio ">
+				<input value="4" name="Radio" type="radio">
+				<label>CSCAN</label>
+			</div>
+			<button id="product" type="button" class="mui-btn mui-btn-blue">随机序列</button><button
+				id="run" type="button" class="mui-btn mui-btn-blue mui-btn-block">模拟运行</button>
+		</div>
+		<div class="queue">
+			<h2>磁道号序列</h2>
+			<div class="d-container">
+				<div class="small-disk">55</div>
+				<div class="small-disk">58</div>
+				<div class="small-disk">39</div>
+				<div class="small-disk">18</div>
+				<div class="small-disk">90</div>
+				<div class="small-disk">160</div>
+				<div class="small-disk">150</div>
+				<div class="small-disk">38</div>
+				<div class="small-disk">184</div>
+			</div>
+		</div>
+		<div class="simulator">
+			<h2>运行模拟器</h2>
+			<div class="s-container">
+				<div class="table-box">
+					<table class="table">
+						<thead>
+						<tr>
+							<th colspan="2">(从100号磁道开始)</th>
+						</tr>
+						<tr>
+							<th>被访问的下一个磁道号</th>
+							<th>移动距离（磁道数）</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr>
+							<td>55</td>
+							<td>45</td>
+						</tr>
+						<tr>
+							<td>58</td>
+							<td>3</td>
+						</tr>
+						<tr>
+							<td>39</td>
+							<td>19</td>
+						</tr>
+						<tr>
+							<td>18</td>
+							<td>21</td>
+						</tr>
+						<tr>
+							<td>90</td>
+							<td>72</td>
+						</tr>
+						<tr>
+							<td>160</td>
+							<td>70</td>
+						</tr>
+						<tr>
+							<td>150</td>
+							<td>10</td>
+						</tr>
+						<tr>
+							<td>38</td>
+							<td>112</td>
+						</tr>
+						<tr>
+							<td>184</td>
+							<td>146</td>
+						</tr>
+						</tbody>
+						<tfoot>
+						<tr>
+							<td colspan="2">平均寻道长度：55.3</td>
+						</tr>
+						</tfoot>
+					</table>
+				</div>
+				<div class="animation">
+					<img class="arrow" src="img/arrow.svg" alt="arrow">
+					<img class="axis" src="img/axis.png" alt="axis">
+					<!-- <div class="scale"></div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="js/disk.js"></script>
+</body>
+</html>

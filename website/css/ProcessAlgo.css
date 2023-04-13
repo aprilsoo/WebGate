@@ -1,0 +1,233 @@
+* { margin:0; padding:0; border:0;}
+html,body { height:100%;}
+.header{
+    height: 50px;
+    width: 100%;
+    background-color: dodgerblue;
+    position: relative;
+}
+.title{
+    width: 30%;
+    left: 0;
+    line-height: 50px;
+    margin-left: 20px;
+    height: 100%;
+    font-family: 微软雅黑;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+}
+.oper{
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    right: 0;
+    text-align: right;
+}
+.oper>img{
+    margin: 10px 20px 10px 20px;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+.context{
+    position: relative;
+    display: flex;
+    height: calc(98% - 50px);
+    /*height: 1000px;*/
+}
+.queue{
+    margin: 5px;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.queue>div{
+    flex: 1;
+    margin: 5px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: dodgerblue;
+    border-radius: 3px;
+}
+.cpu-container{
+    position: relative;
+    margin-top: 5px;
+    height: calc(95% - 31.46px);
+    display: flex;
+    line-height: 100%;
+}
+.p-container{
+    position: relative;
+    margin-top: 5px;
+    height: calc(95% - 31.46px);
+    display: flex;
+    flex-flow: row wrap;
+    overflow: auto;
+}
+.small-process{
+    background-color: orange;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    font-size: 10px;
+    font-weight: bolder;
+    margin:10px;
+
+}
+.cpu-container>img{
+    margin: 25px;
+    flex: 1;
+    height: 120px;
+    width: 120px;
+}
+.run-process-container{
+    flex: 1;
+}
+.run-process{
+    background-color: gray;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    line-height: 100px;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    font-weight: bolder;
+    margin-bottom: 30px;
+}
+
+
+.process{
+    margin: 5px;
+    height: 100%;
+    flex: 1;
+    margin: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: dodgerblue;
+    border-radius: 3px;
+    overflow: auto;
+}
+.process>h2{
+    margin: 5px;
+}
+.p-panel{
+    margin: 10px;
+    padding: 5px;
+    border-width: 3px;
+    border-color: dodgerblue;
+    border-style: double;
+    border-radius: 3px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    height: 100px;
+    overflow: auto;
+    position: relative;
+}
+.p-add{
+    margin: 10px;
+    padding: 5px;
+    border-width: 3px;
+    border-color: dodgerblue;
+    border-style: double;
+    border-radius: 3px;
+    height: 100px;
+    text-align: center;
+    cursor: pointer;
+}
+.p-add>img{
+    height: 100%;
+    width: 50%;
+}
+.p-panel>p>span{
+    font-weight: bold;
+}
+.p-panel input{
+    width: 40%;
+    height: 22px;
+    font-size: math;
+}
+
+.p-panel>img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 25px;
+    width: 25px;
+    cursor: pointer;
+}
+
+.other{
+    margin: 5px;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.other>div{
+    margin: 5px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: dodgerblue;
+    border-radius: 3px;
+}
+.other h2{
+    margin: 5px;
+}
+
+.algo-select{
+    flex: 1;
+}
+#algo-select{
+    margin: 30px;
+    font-size: math;
+}
+.algo-select>div{
+    display: flex;
+    height: 70%;
+}
+.container-select{
+    line-height: 100%;
+    flex: 1;
+}
+/*.container-option{*/
+/*    flex: 2;*/
+/*    border-width: 3px;*/
+/*    border-color: dodgerblue;*/
+/*    border-style: double;*/
+/*    border-radius: 3px;*/
+/*}*/
+.operation{
+     flex: 1;
+ }
+.operation>div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 60%;
+}
+.operation>div>button{
+    font-size: 18px;
+    line-height: 1.5;
+    width: 18%;
+}
+.log{
+    flex: 2;
+    overflow: auto;
+}
+.log>div{
+    margin: 5px;
+    padding: 5px;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}

@@ -66,13 +66,17 @@ void Fsm::test(int fd,int epfd){
     }
     info("body_buffer:%s",hp.body_buffer);
     info("请求行:%d %d %s",hp.method,hp.version,hp.url);
-
 }
 
-int send_file(int fd ,const char *pwd){
+int send_file(int fd ,char *pwd){
+    char *type_file = get_mime(pwd);
+
     struct stat buf_stat;
     int ret = stat(pwd,&buf_stat);
     if(ret != 0)return -1;
+
+    debug("file pwd = %s",pwd);
+    debug("size of file = %d",buf_stat.st_size);
 
 
     int fd_file = open(pwd,O_RDONLY);
@@ -80,11 +84,16 @@ int send_file(int fd ,const char *pwd){
 
     char txt[buf_stat.st_size]="";
     
-    int len = read(fd_file,txt,sizeof(txt));
-    if(len == -1) return -1;
-
-    write(fd,txt,sizeof(txt));
-
+    if(true){
+        int len = read(fd_file,txt,sizeof(txt));
+        write(fd,txt,sizeof(txt));
+    }else{
+        while(read(fd_file,txt,sizeof(txt))){
+            write(fd,txt,strlen(txt));
+        }
+    }
+    
+    close(fd);
     return 0;
 }
 
@@ -109,9 +118,8 @@ int send_headers(int fd,char *pwd){
     char *type_file = get_mime(pwd);
     strcat(buf,"Content-Type:");
     strcat(buf,type_file);
-    strcat(buf,"; charset=utf-8\r\n");
+    strcat(buf,"\r\n");
 
-    
     strcat(buf,"\r\n");
     write(fd,buf,strlen(buf));
 }
@@ -122,37 +130,50 @@ void Fsm::response(int epfd,struct epoll_event ev){
     Httpparse hp(fd);
     if(hp.status == -1){
         epoll_ctl(epfd,EPOLL_CTL_DEL,fd,&ev);
+        close(fd);
         return;
     }
 
-    debug("parse ok ");
     
+
     char pwd_path[256]="";
 	char * path = getenv("PWD");
     strcat(pwd_path,path);
-    strcat(pwd_path,"/../Website");
+    strcat(pwd_path,"/../website");
 
     if(strcmp(hp.url,"/")==0){
-        hp.url = "/main.html";
+        strcat(pwd_path,"/Main.html");
+    }else{
+        strcat(pwd_path,hp.url);
     }
-
-    strcat(pwd_path,hp.url);
 
     int ret;
 
     ret = access(pwd_path,F_OK);
+
+    info("%s",pwd_path);
+
     if(ret == -1){
         memset(pwd_path,0,sizeof(pwd_path));
         strcat(pwd_path,path);
-        strcat(pwd_path,"/../Website/404.html");
+        strcat(pwd_path,"/../website/404.html");
+
+        send_response_head(fd,hp.version,Res_NOT_FOUND);
+        send_headers(fd,pwd_path);
+        send_file(fd,pwd_path);
+
+    }else{
+
+        send_response_head(fd,hp.version,Res_OK);
+        send_headers(fd,pwd_path);
+        send_file(fd,pwd_path);
     }
 
-    info("%s",pwd_path);
     
-    send_response_head(fd,hp.version,Res_OK);
-    send_headers(fd,pwd_path);
-    send_file(fd,pwd_path);
     
 	// chdir(pwd_path);
+
     epoll_ctl(epfd,EPOLL_CTL_DEL,fd,&ev);
+    close(fd);
+
 }

@@ -1,0 +1,32 @@
+* {margin: 0;padding: 0;border: 0;}
+body,html{height: 100%;}
+body{
+	font-family: 微软雅黑;
+}
+.header-box{
+	background-color: #222;
+}
+.nav-box{
+	color: white;
+	display: inline-block;
+	text-align: center;
+	width: 100px;
+	line-height: 50px;
+	cursor: pointer;
+}
+.main-box{
+	display: flex;
+	padding: 0 20px;
+	flex-direction: column;
+	height: calc(100% - 50px);
+}
+.title-box{
+	margin: 20px 0 20px 0;
+}
+.title-box>h1{
+	text-align: center;
+	font-weight: bold;
+}
+.content{
+	flex-grow: 1;
+}

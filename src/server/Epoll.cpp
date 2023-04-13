@@ -20,7 +20,6 @@ int Epoll::add(int fd,__uint32_t events){
     epe.data.fd = fd;
     epe.events = events;
     int w = epoll_ctl(epfd,EPOLL_CTL_ADD,fd,&epe);
-    debug("sockfd in epoll is %d" ,w);
     return w;
 }
 

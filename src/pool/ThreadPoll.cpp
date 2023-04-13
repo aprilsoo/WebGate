@@ -24,18 +24,16 @@ int ThreadPoll::add_task(Task task){
 }
 
 void run(ThreadPoll *tp){
+    Task now_task;
     while(1){
-        std::unique_lock<std::mutex> unl(tp->task_mutex);
-        while(tp->st == tp->ed){
-            tp->cv.wait(unl);
+        {
+            std::unique_lock<std::mutex> unl(tp->task_mutex);
+            while(tp->st == tp->ed){
+                tp->cv.wait(unl);
+            }
+            now_task = tp->tasks[tp->st];
+            tp->st = (tp->st+1)%tp->size_task;
         }
-
-        std::unique_ptr<Task> now_task(new Task(tp->tasks[tp->st]));
-        tp->st = (tp->st+1)%tp->size_task;
-
-        unl.unlock();
-
-        now_task->func(now_task->epfd , now_task->ev);
-
+        now_task.func(now_task.epfd , now_task.ev);
     }
 }
