@@ -104,8 +104,8 @@ int main(){
         
                     // info("连接 ip=%s  port=%s",inet_ntoa(client_),ntohs(client_.sin_port));
                 }else if(ep.evs[i].events & EPOLLIN){
-                    task.fd = ep.evs[i].data.fd;
-                    task.func = Fsm::test;
+                    task.ev = ep.evs[i];
+                    task.func = Fsm::response;
                     task.epfd = ep.get_epfd();
                     while(tp.add_task(task)!=-1);
                 }

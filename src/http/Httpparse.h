@@ -41,8 +41,6 @@ public:
     char **header_buffer;
     char *body_buffer;
 
-    
-
     Httpparse(int _fd);
     ~Httpparse();
 };

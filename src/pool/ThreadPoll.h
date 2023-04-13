@@ -7,6 +7,7 @@
 #include<thread>
 #include<mutex>
 #include <condition_variable>
+#include<sys/epoll.h>
 
 #include"Mysqlpool.h"
 #include"../tool/Logger.h"
@@ -18,8 +19,8 @@ class ThreadPoll;
 void run(ThreadPoll* tp);
 
 struct Task{
-    void (*func)(int fd,int epfd);
-    int fd;
+    void (*func)(int epfd,struct epoll_event ev);
+    struct epoll_event ev;
     int epfd;
 };
 

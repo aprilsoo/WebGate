@@ -13,8 +13,10 @@ int ThreadPoll::add_task(Task task){
     sleep(1);
     if((ed+1)%size_task == st) return -1;
     
-    tasks[ed].fd = task.fd;
+    tasks[ed].ev = task.ev;
+    tasks[ed].epfd = task.epfd;
     tasks[ed].func = task.func;
+
     ed = (ed+1)%size_task;
     cv.notify_one();
 
@@ -33,7 +35,7 @@ void run(ThreadPoll *tp){
 
         unl.unlock();
 
-        now_task->func(now_task->fd);
+        now_task->func(now_task->epfd , now_task->ev);
 
     }
 }

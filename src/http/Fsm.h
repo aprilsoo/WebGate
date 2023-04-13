@@ -1,6 +1,11 @@
 #ifndef _FSM_
 #define _FSM_
 
+enum Response{
+    Res_OK=200,
+    Res_NOT_FOUND=404
+};
+
 class Fsm{
 public:
 
