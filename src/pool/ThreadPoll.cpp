@@ -10,7 +10,6 @@
 
 
 int ThreadPoll::add_task(Task task){
-    sleep(1);
     if((ed+1)%size_task == st) return -1;
     
     tasks[ed].ev = task.ev;

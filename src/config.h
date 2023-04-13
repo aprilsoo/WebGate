@@ -2,7 +2,7 @@
 #define _CONFIG_
 
 // #define IP_ADDR "172.21.74.199" /*IPv4 addr*/
-#define PORT 9000 /*port*/
+#define PORT 8888 /*port*/
 #define MAX_LISTEN_NUM 20 /*listen max number*/
 
 

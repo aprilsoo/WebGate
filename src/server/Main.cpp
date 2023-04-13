@@ -85,12 +85,19 @@ int main(){
         char servername[128] = {0};
         while(1){
             int cnt = ep.wait();
+            debug("cnt = %d",cnt);
             for(int i=0;i<cnt;i++){
                 if(ep.evs[i].data.fd == sockfd && (ep.evs[i].events & EPOLLIN)){
                     struct sockaddr_in client_;
                     socklen_t len = sizeof(client_);
 
                     int client_fd = accept(sockfd,(sockaddr *)&client_,&len);
+
+                    //设置非阻塞
+                    // int flag = fcntl(client_fd,F_GETFL);
+					// flag |= O_NONBLOCK;
+					// fcntl(client_fd,F_SETFL,flag);
+
 
                     ep.add(client_fd,EPOLLIN | EPOLLET);
                     
@@ -103,11 +110,14 @@ int main(){
         
                     // info("连接 ip=%s  port=%s",inet_ntoa(client_),ntohs(client_.sin_port));
                 }else if(ep.evs[i].events & EPOLLIN){
+                    info("新读入fd = %d",ep.evs[i].data.fd);
                     task.ev = ep.evs[i];
                     task.func = Fsm::response;
                     task.epfd = ep.get_epfd();
 
-                    while(tp.add_task(task)==-1);
+                    while(tp.add_task(task)==-1){
+                        
+                    }
                 }
             }
         }

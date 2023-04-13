@@ -4,7 +4,9 @@
 #include<cstdarg>
 #include<time.h>
 #include<unistd.h>
-
+#include <stdio.h>
+#include <sys/timeb.h>
+#include <time.h>
 
 
 #include"../config.h"
@@ -52,8 +54,21 @@ void Logger::log(int level,const char * file,const int line,const char *text,...
     else if(level == Logger::ERROR)cnt += sprintf(logbuffer+cnt,"%s ","ERROR");
     else if(level == Logger::FATAL)cnt += sprintf(logbuffer+cnt,"%s ","FATAL");
     
-    cnt += strftime(logbuffer+cnt,32,"%F %T ",local);
-    cnt += sprintf(logbuffer+cnt,"%s:%d\n",file,line);
+
+    tm      *ptm;
+    timeb   stTimeb;
+    char    szTime[19];
+    ftime(&stTimeb);
+    ptm = localtime(&stTimeb.time);
+    sprintf(szTime, "%02d-%02d %02d:%02d:%02d.%03d",
+            ptm->tm_mon+1, ptm->tm_mday, ptm->tm_hour, ptm->tm_min, ptm->tm_sec, stTimeb.millitm);
+    szTime[18] = 0;
+
+    cnt += sprintf(logbuffer+cnt,"%s ",szTime);
+// cnt += strftime(logbuffer+cnt,32,"%F %T ",local);
+
+
+    cnt += sprintf(logbuffer+cnt,"%s:%d          ",file,line);
 
     va_start(va_ptr,text);
     cnt += vsprintf(logbuffer+cnt,text,va_ptr);

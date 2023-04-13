@@ -30,7 +30,7 @@ char *get_mime(char* name){
     if (strcmp(dot, ".jpg") == 0 || strcmp(dot, ".jpeg") == 0)
         return "image/jpeg";
     if (strcmp(dot, ".gif") == 0)
-        return "image/gif";
+        return "image/gif";    
     if (strcmp(dot, ".png") == 0)
         return "image/png";
     if (strcmp(dot, ".css") == 0)
@@ -56,6 +56,13 @@ char *get_mime(char* name){
     if (strcmp(dot, ".pac") == 0)
         return "application/x-ns-proxy-autoconfig";
 
+    //
+
+    if (strcmp(dot, ".svg") == 0)
+        return "image/svg+xml";
+
+
+
     return "text/plain; charset=utf-8";
 }
 
@@ -75,8 +82,8 @@ int send_file(int fd ,char *pwd){
     int ret = stat(pwd,&buf_stat);
     if(ret != 0)return -1;
 
-    debug("file pwd = %s",pwd);
-    debug("size of file = %d",buf_stat.st_size);
+    // debug("file pwd = %s",pwd);
+    // debug("size of file = %d",buf_stat.st_size);
 
 
     int fd_file = open(pwd,O_RDONLY);
@@ -87,6 +94,7 @@ int send_file(int fd ,char *pwd){
     if(true){
         int len = read(fd_file,txt,sizeof(txt));
         write(fd,txt,sizeof(txt));
+        // if(len < 2000)debug("file ::: %s",txt);
     }else{
         while(read(fd_file,txt,sizeof(txt))){
             write(fd,txt,strlen(txt));
@@ -129,6 +137,7 @@ void Fsm::response(int epfd,struct epoll_event ev){
 
     Httpparse hp(fd);
     if(hp.status == -1){
+        debug("closed!");
         epoll_ctl(epfd,EPOLL_CTL_DEL,fd,&ev);
         close(fd);
         return;
@@ -151,8 +160,16 @@ void Fsm::response(int epfd,struct epoll_event ev){
 
     ret = access(pwd_path,F_OK);
 
-    info("%s",pwd_path);
+    // info("%s",pwd_path);
 
+    char *tt = strrchr(pwd_path,'.');
+    if(strcmp(tt,".ico") == 0 ){
+
+        // epoll_ctl(epfd,EPOLL_CTL_DEL,fd,&ev);
+        // close(fd);
+        return;
+    }
+    
     if(ret == -1){
         memset(pwd_path,0,sizeof(pwd_path));
         strcat(pwd_path,path);
@@ -172,8 +189,8 @@ void Fsm::response(int epfd,struct epoll_event ev){
     
     
 	// chdir(pwd_path);
-
-    epoll_ctl(epfd,EPOLL_CTL_DEL,fd,&ev);
-    close(fd);
+    debug("done!");
+    // epoll_ctl(epfd,EPOLL_CTL_DEL,fd,&ev);
+    // close(fd);
 
 }

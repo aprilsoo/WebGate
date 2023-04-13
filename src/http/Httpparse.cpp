@@ -13,7 +13,10 @@ Httpparse::Httpparse(int _fd){
     status = -1;
 
     char buf[MAX_READ_BUFFER];
+
+    debug("开始读入");
     int ret = read(fd,buf,MAX_READ_BUFFER);
+    debug("读入结束");
     if(ret <= 0){
         
         return;
